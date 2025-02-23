@@ -1,13 +1,17 @@
 package tests.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
+
 @Data
+@AllArgsConstructor
 public class OrderModel {
-    String id;
-    String petId;
-    String quantity;
+    int id;
+    int petId;
+    int quantity;
     String shipDate;
-    String status;
+    OrderStatus status;
     Boolean complete;
 }
+

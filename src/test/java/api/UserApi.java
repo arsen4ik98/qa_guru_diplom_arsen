@@ -17,11 +17,11 @@ public class UserApi {
     WebDriverConfig authConfig = ConfigFactory.create(WebDriverConfig.class);
     String getBaseUrl = authConfig.getBaseUrl();
 
-    @Step("Регаемся через API")
+    @Step("Регистрируемся через API")
     public Response registerUser(int id, String username, String firstName, String lastName, String email, String phone, String password, int userStatus) {
 
         UserModel userModel = new UserModel(
-                String.valueOf(id), username, firstName, lastName, email, password, phone, String.valueOf(userStatus)
+                id, username, firstName, lastName, email, password, phone, userStatus
         );
 
         Response response = given(userRequestSpecification)
@@ -62,12 +62,13 @@ public class UserApi {
 
     @Step("Удаляем пользователя через API")
     public Response deleteUser(String username) {
-        return given(userRequestSpecification)
+        Response response = given(userRequestSpecification)
                 .when()
                 .delete(getBaseUrl + "/v2/user/" + username)  // Отправляем DELETE-запрос
                 .then()
                 .spec(userResponseSpecification200)
                 .extract().response();
+        return response;
     }
 
 }
