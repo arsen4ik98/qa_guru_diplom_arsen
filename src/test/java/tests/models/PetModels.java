@@ -24,13 +24,6 @@ public class PetModels {
         this.PetTag = PetTag;
         this.status = status;
     }
-//    public PetModels(int id, Category category, String name, List<String> photoUrls, Tag tag, PetStatus status) {
-//        this.id = id;
-//        this.category = category;
-//        this.name = name;
-//        this.photoUrls = photoUrls;
-//        this.tag = tag;
-//        this.status = status;
-//    }
+
 
 }

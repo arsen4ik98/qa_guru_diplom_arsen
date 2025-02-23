@@ -6,6 +6,8 @@ import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
 import org.aeonbits.owner.ConfigFactory;
 import tests.models.*;
+import io.restassured.response.Response;
+import java.util.List;
 
 import java.util.List;
 
@@ -26,7 +28,6 @@ public class PetApi {
     @Step("Добавляем нового животного")
     public Response addPet(int id, Category category, String name, List<String> photoUrls, PetTag PetTag, PetStatus status) {
 
-        // Убедись, что создаешь PetModels правильно
         PetModels petModels = new PetModels(id, category, name, photoUrls, PetTag, status);
 
         Response response = given(userRequestSpecification)
