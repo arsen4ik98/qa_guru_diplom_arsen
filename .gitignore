@@ -1,0 +1,37 @@
+# 📁 Игнорируем IDE
+.idea/
+.vscode/
+*.iml
+
+# 📁 Логи и временные файлы
+*.log
+*.tmp
+*.swp
+
+# 📁 Системные файлы
+.DS_Store
+Thumbs.db
+
+# 📁 Java и Gradle
+/build/
+.gradle/
+out/
+bin/
+
+# 📁 Кэш и зависимости
+*.class
+*.jar
+*.war
+*.ear
+
+# 📁 Настройки тестов и окружения
+src/test/resources/files/
+selenium/video/
+selenium/logs/
+test-output/
+target/
+
+# 📁 Конфиденциальные файлы
+*.env
+config.properties
+credentials.json
