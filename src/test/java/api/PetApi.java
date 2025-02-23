@@ -18,7 +18,6 @@ public class PetApi {
     WebDriverConfig authConfig = ConfigFactory.create(WebDriverConfig.class);
     String getBaseUrl = authConfig.getBaseUrl();
 
-
     @Step("Добавляем нового животного")
     public Response addPet(int id, Category category, String name, List<String> photoUrls, Tag tag, PetStatus status) {
 

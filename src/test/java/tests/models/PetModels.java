@@ -16,3 +16,4 @@ public class PetModels {
     Tag tag;
     PetStatus status;
 }
+

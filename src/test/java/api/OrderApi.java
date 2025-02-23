@@ -7,7 +7,6 @@ import io.restassured.specification.ResponseSpecification;
 import org.aeonbits.owner.ConfigFactory;
 import tests.models.OrderModel;
 import tests.models.OrderStatus;
-import tests.models.UserModel;
 
 import static io.restassured.RestAssured.given;
 import static specs.UserSpecs.userRequestSpecification;

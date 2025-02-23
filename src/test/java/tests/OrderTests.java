@@ -1,7 +1,6 @@
 package tests;
 
 import api.OrderApi;
-import api.UserApi;
 import config.WebDriverConfig;
 import io.restassured.response.Response;
 import org.aeonbits.owner.ConfigFactory;

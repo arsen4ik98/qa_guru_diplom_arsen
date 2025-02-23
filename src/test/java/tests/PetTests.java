@@ -1,7 +1,6 @@
 package tests;
 
 import api.PetApi;
-import api.UserApi;
 import config.WebDriverConfig;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
