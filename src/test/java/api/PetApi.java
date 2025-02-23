@@ -13,17 +13,21 @@ import static io.restassured.RestAssured.given;
 import static specs.UserSpecs.userRequestSpecification;
 import static specs.UserSpecs.userResponseSpecification200;
 
+import tests.models.PetTag;
+import tests.models.PetStatus;
+import tests.models.PetModels;
+
+
 public class PetApi {
 
     WebDriverConfig authConfig = ConfigFactory.create(WebDriverConfig.class);
     String getBaseUrl = authConfig.getBaseUrl();
 
     @Step("Добавляем нового животного")
-    public Response addPet(int id, Category category, String name, List<String> photoUrls, Tag tag, PetStatus status) {
+    public Response addPet(int id, Category category, String name, List<String> photoUrls, PetTag PetTag, PetStatus status) {
 
-        PetModels petModels = new PetModels(
-                id, category,name,photoUrls,tag,status
-        );
+        // Убедись, что создаешь PetModels правильно
+        PetModels petModels = new PetModels(id, category, name, photoUrls, PetTag, status);
 
         Response response = given(userRequestSpecification)
                 .body(petModels)

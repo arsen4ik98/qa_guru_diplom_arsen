@@ -3,7 +3,23 @@ plugins {
     id 'io.qameta.allure' version '2.12.0' // Обновлено
     id "io.freefair.lombok" version "8.11"
 }
+//dependencies {
+    // Другие зависимости вашего проекта
+//    compileOnly 'org.projectlombok:lombok:1.18.30'
+ //   annotationProcessor 'org.projectlombok:lombok:1.18.30'
+//}
 
+
+tasks.withType(Test) {
+    useJUnitPlatform() // Это необходимо для JUnit 5
+    systemProperties(System.getProperties())
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
 def aspectjWeaverVersion = "1.9.22",
     selenideVersion = "6.13.0",
     restAssuredVersion = "5.3.0",
