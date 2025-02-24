@@ -37,8 +37,7 @@ public class TestBase {
         } catch (IOException e) {
             throw new RuntimeException("Could not load properties file: " + env + ".properties", e);
         }
-
-        config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
+        localStorage.getItem('api_key')    config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
 
         System.out.println(System.getProperties());
         System.out.println("Is Remote: " + config.getIsRemote());

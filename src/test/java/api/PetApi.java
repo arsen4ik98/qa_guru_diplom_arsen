@@ -42,10 +42,6 @@ public class PetApi {
         return response;
     }
 
-    public Response getWithAuth(String endpoint, ResponseSpecification resp) {
-        return (Response) RestAssured.given().header("api_key", "special-key", new Object[0]).contentType(ContentType.JSON).expect().spec(resp).when().get(endpoint, new Object[0]);
-    }
-
     @Step("Получаем данные заказа")
     public Response getOrder(int orderId, ResponseSpecification spec) {
 
