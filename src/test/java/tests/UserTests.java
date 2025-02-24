@@ -54,6 +54,7 @@ public class UserTests extends TestBase{
     @Test
     @DisplayName("Проверка обновления данных пользователя")
     void updateUserApiTest() {
+        userApi.registerUser(100,userName,"Arsen","Beglaryan","arsenb@test.ru","79009999999",password,2);
         Map<String, Object> updatedFields = new HashMap<>();
         updatedFields.put("phone", "79999999999");
         userApi.updateUser(userName, updatedFields);
