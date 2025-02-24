@@ -39,7 +39,7 @@ public class OrderApi {
 
         Response response = given(userRequestSpecification)
                 .when()
-                .get(getBaseUrl + "/v2/store/order" + orderId) // Передаём username в URL
+                .get(getBaseUrl + "/v2/store/order/" + orderId) // Передаём username в URL
                 .then()
                 .spec(spec)
                 .extract().response();
@@ -50,7 +50,7 @@ public class OrderApi {
     public Response deleteOrder(int orderId, ResponseSpecification spec) {
         Response response = given(userRequestSpecification)
                 .when()
-                .delete(getBaseUrl + "/v2/store/order" + orderId)  // Отправляем DELETE-запрос
+                .delete(getBaseUrl + "/v2/store/order/" + orderId)  // Отправляем DELETE-запрос
                 .then()
                 .spec(spec)
                 .extract().response();
