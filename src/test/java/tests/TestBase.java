@@ -66,20 +66,6 @@ public class TestBase {
     @BeforeEach
     void beforeEach() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-        Selenide.open(Configuration.baseUrl);
-    }
-
-
-    @AfterEach
-    void addAttachments() {
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        Attach.addVideo();
-    }
-
-    @AfterEach
-    void afterEach() {
-        Selenide.closeWebDriver();
+        //Selenide.open(Configuration.baseUrl);
     }
 }
