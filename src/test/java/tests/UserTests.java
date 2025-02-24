@@ -2,9 +2,11 @@ package tests;
 
 import api.UserApi;
 import config.WebDriverConfig;
+import io.qameta.allure.Owner;
 import io.restassured.response.Response;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +14,8 @@ import java.util.Map;
 import static org.hamcrest.Matchers.equalTo;
 import static specs.UserSpecs.userResponseSpecification200;
 import static specs.UserSpecs.userResponseSpecification404;
-
+@Tag("bi_test")
+@Owner("arsen4ik98")
 public class UserTests extends TestBase{
 
     WebDriverConfig authConfig = ConfigFactory.create(WebDriverConfig.class);

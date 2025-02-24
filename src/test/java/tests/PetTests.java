@@ -3,6 +3,7 @@ package tests;
 
 import api.PetApi;
 import config.WebDriverConfig;
+import io.qameta.allure.Owner;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tags;
@@ -13,7 +14,8 @@ import tests.models.PetTag;
 import tests.models.Category;
 
 import java.util.Collections;
-
+@Tag("bi_test")
+@Owner("arsen4ik98")
 public class PetTests extends TestBase {
 
 

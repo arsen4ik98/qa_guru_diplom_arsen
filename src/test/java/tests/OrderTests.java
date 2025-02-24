@@ -2,9 +2,11 @@ package tests;
 
 import api.OrderApi;
 import config.WebDriverConfig;
+import io.qameta.allure.Owner;
 import io.restassured.response.Response;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.models.OrderStatus;
 
@@ -12,6 +14,9 @@ import static org.hamcrest.Matchers.equalTo;
 import static specs.UserSpecs.userResponseSpecification200;
 import static specs.UserSpecs.userResponseSpecification404;
 
+
+@Tag("bi_test")
+@Owner("arsen4ik98")
 public class OrderTests extends TestBase{
 
     WebDriverConfig authConfig = ConfigFactory.create(WebDriverConfig.class);
