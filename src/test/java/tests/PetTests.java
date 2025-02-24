@@ -23,6 +23,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static specs.UserSpecs.userResponseSpecification200;
 import static specs.UserSpecs.userResponseSpecification404;
 
+@DisplayName("Тесты животного")
 @Tag("bi_test")
 @Owner("arsen4ik98")
 public class PetTests extends TestBase {

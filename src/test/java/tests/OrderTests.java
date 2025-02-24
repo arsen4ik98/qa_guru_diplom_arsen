@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static specs.UserSpecs.userResponseSpecification200;
 import static specs.UserSpecs.userResponseSpecification404;
 
-
+@DisplayName("Тесты заказов")
 @Tag("bi_test")
 @Owner("arsen4ik98")
 public class OrderTests extends TestBase{

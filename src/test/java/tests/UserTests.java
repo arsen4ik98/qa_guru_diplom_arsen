@@ -14,6 +14,7 @@ import java.util.Map;
 import static org.hamcrest.Matchers.equalTo;
 import static specs.UserSpecs.userResponseSpecification200;
 import static specs.UserSpecs.userResponseSpecification404;
+@DisplayName("Тесты пользователя")
 @Tag("bi_test")
 @Owner("arsen4ik98")
 public class UserTests extends TestBase{
