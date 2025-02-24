@@ -19,8 +19,6 @@ public class PetTests extends TestBase {
 
 
     WebDriverConfig authConfig = ConfigFactory.create(WebDriverConfig.class);
-    String userName = authConfig.userName();
-    String password = authConfig.password();
     PetApi petApi = new PetApi();
 
 

@@ -2,6 +2,8 @@ package api;
 
 import config.WebDriverConfig;
 import io.qameta.allure.Step;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
 import org.aeonbits.owner.ConfigFactory;
@@ -38,6 +40,10 @@ public class PetApi {
                 .spec(userResponseSpecification200)
                 .extract().response();
         return response;
+    }
+
+    public Response getWithAuth(String endpoint, ResponseSpecification resp) {
+        return (Response) RestAssured.given().header("api_key", "special-key", new Object[0]).contentType(ContentType.JSON).expect().spec(resp).when().get(endpoint, new Object[0]);
     }
 
     @Step("Получаем данные заказа")

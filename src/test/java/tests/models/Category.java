@@ -1,11 +1,11 @@
 package tests.models;
 
-
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
+@Builder
+
 public class Category {
     private int id;
     private String name;

@@ -15,8 +15,6 @@ import static specs.UserSpecs.userResponseSpecification404;
 public class OrderTests extends TestBase{
 
     WebDriverConfig authConfig = ConfigFactory.create(WebDriverConfig.class);
-    String userName = authConfig.userName();
-    String password = authConfig.password();
     OrderApi orderApi = new OrderApi();
 
     @DisplayName("Проверка создания заказа")
