@@ -44,7 +44,7 @@ public class OrderTests extends TestBase{
                 .body("petId", equalTo(petId))
                 .body("quantity", equalTo(quantity))
                 .body("shipDate", equalTo(shipDate))
-                .body("status", equalTo(OrderStatus.PLACED))
+                .body("status", equalTo(OrderStatus.PLACED.toString()))
                 .body("complete", equalTo(complete));
     }
 
