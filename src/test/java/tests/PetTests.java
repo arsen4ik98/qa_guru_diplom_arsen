@@ -96,7 +96,7 @@ public class PetTests extends TestBase {
         petApi.deletePet(petId,userResponseSpecification200);
         Response getResponse = petApi.getPet(petId,userResponseSpecification404);
         getResponse.then()
-                .body("message", equalTo("User not found"));
+                .body("message", equalTo("Pet not found"));
     }
 
 
