@@ -12,6 +12,7 @@ import io.restassured.response.Response;
 import java.util.List;
 
 import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static specs.UserSpecs.userRequestSpecification;
@@ -42,26 +43,40 @@ public class PetApi {
         return response;
     }
 
-    @Step("Получаем данные заказа")
-    public Response getOrder(int orderId, ResponseSpecification spec) {
+    @Step("Получаем данные животного")
+    public Response getPet(int petId, ResponseSpecification spec) {
 
         Response response = given(userRequestSpecification)
                 .when()
-                .get(getBaseUrl + "/v2/store/order" + orderId) // Передаём username в URL
+                .get(getBaseUrl + "/v2/pet/" + petId) // Передаём username в URL
                 .then()
                 .spec(spec)
                 .extract().response();
         return response;
     }
 
-    @Step("Удаляем заказа")
-    public Response deleteOrder(int orderId, ResponseSpecification spec) {
+    @Step("Удаляем животного")
+    public Response deletePet(int petId, ResponseSpecification spec) {
         Response response = given(userRequestSpecification)
                 .when()
-                .delete(getBaseUrl + "/v2/store/order" + orderId)  // Отправляем DELETE-запрос
+                .delete(getBaseUrl + "/v2/pet/" + petId)  // Отправляем DELETE-запрос
                 .then()
                 .spec(spec)
                 .extract().response();
+        return response;
+    }
+
+    @Step("Частично обновляем животного")
+    public Response updatePet( Map<String, Object> updatedFields) {
+
+        Response response = given(userRequestSpecification)
+                .body(updatedFields)
+                .when()
+                .put(getBaseUrl + "/v2/pet") // Запрос
+                .then()
+                .spec(userResponseSpecification200) // Проверяем, что статус 200
+                .extract().response();
+
         return response;
     }
 
