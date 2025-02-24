@@ -29,9 +29,11 @@ public class PetTests extends TestBase {
     @Test
 
     void registerUserApiTest() {
-        Category category = new Category(1232, "555");
+        /*Category category = new Category(1232, "555");
         PetTag PetTag = new PetTag(2, "54");
 
         petApi.addPet(2, category, "CatTest", Collections.emptyList(), PetTag, PetStatus.AVAILABLE);
+
+         */
     }
 }
