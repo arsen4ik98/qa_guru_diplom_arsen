@@ -16,8 +16,6 @@ ____
 
 * <a href="#testops">Интеграция с Allure TestOps</a>
 
-* <a href="#allure">Интеграция с Jira</a>
-
 * <a href="#telegram">Уведомление в Telegram при помощи бота</a>
 
 ____
