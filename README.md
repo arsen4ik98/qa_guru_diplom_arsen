@@ -54,7 +54,7 @@ ____
 
 ____
 <a id="jenkins"></a>
-## <img alt="Jenkins" height="25" src="images/logo/Jenkins.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/qa_guru_hw14_arsen/)</a>
+## <img alt="Jenkins" height="25" src="images/logo/Jenkins.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/qa_guru_arsen_api_diplom/)</a>
 ____
 <p align="center">  
 <a href="https://jenkins.autotests.cloud/job/qa_guru_hw14_arsen/"><img src="images/screen/1.png" alt="Jenkins" width="950"/></a>  
@@ -93,7 +93,7 @@ bi_test
 ```
 ___
 <a id="allure"></a>
-## <img alt="Allure" height="25" src="images/logo/Allure.svg" width="25"/></a> <a name="Allure"></a>Allure [отчет](https://jenkins.autotests.cloud/job/qa_guru_hw14_arsen/17/allure/)</a>
+## <img alt="Allure" height="25" src="images/logo/Allure.svg" width="25"/></a> <a name="Allure"></a>Allure [отчет](https://jenkins.autotests.cloud/job/qa_guru_arsen_api_diplom/18/allure/)</a>
 ___
 
 ### *Основная страница отчёта*
@@ -118,7 +118,7 @@ ___
 
 ____
 <a id="testops"></a>
-## <img alt="Allure" height="25" src="images/logo/Allure2.svg" width="25"/></a> Интеграция с Allure TestOps
+## <img alt="Allure" height="25" src="images/logo/Allure2.svg" width="25"/></a> Интеграция с </a>Allure [TestOps](https://allure.autotests.cloud/launch/44833)</a>
 ____
 ### *Allure TestOps Запуски*
 <p align="center">  
