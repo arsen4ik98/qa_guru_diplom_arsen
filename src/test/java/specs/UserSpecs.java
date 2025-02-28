@@ -6,8 +6,7 @@ import io.restassured.specification.ResponseSpecification;
 
 import static helpers.CustomApiListener.withCustomTemplates;
 import static io.restassured.RestAssured.with;
-import static io.restassured.filter.log.LogDetail.BODY;
-import static io.restassured.filter.log.LogDetail.STATUS;
+import static io.restassured.filter.log.LogDetail.*;
 import static io.restassured.http.ContentType.JSON;
 
 public class UserSpecs {
@@ -22,8 +21,7 @@ public class UserSpecs {
     public static ResponseSpecification createResponseSpecification(int statusCode, boolean expectJson) {
         ResponseSpecBuilder builder = new ResponseSpecBuilder()
                 .expectStatusCode(statusCode)
-                .log(STATUS)
-                .log(BODY);
+                .log(ALL);
 
         // Если ожидаем JSON, добавляем соответствующую проверку
         if (expectJson) {
