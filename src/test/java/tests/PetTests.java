@@ -94,12 +94,11 @@ public class PetTests extends TestBase {
         Category category = new Category(1232, "555");
         PetTag PetTag = new PetTag(2, "54");
         petApi.addPet(petId, category, "CatTest", Collections.emptyList(), PetTag, PetStatus.AVAILABLE);
-        petApi.deletePet(petId,userResponseSpecification200);
-        Response getResponse = petApi.getPet(petId,userResponseSpecification404);
+        petApi.deletePet(petId, userResponseSpecification200);
+        Response getResponse = petApi.getPet(petId, userResponseSpecification404);
         getResponse.then()
                 .body("message", equalTo("Pet not found"));
     }
-
 
 
 }

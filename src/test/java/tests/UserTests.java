@@ -8,16 +8,18 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import static org.hamcrest.Matchers.equalTo;
 import static specs.UserSpecs.userResponseSpecification200;
 import static specs.UserSpecs.userResponseSpecification404;
+
 @DisplayName("Тесты пользователя")
 @Tag("bi_test")
 @Owner("arsen4ik98")
-public class UserTests extends TestBase{
+public class UserTests extends TestBase {
 
     WebDriverConfig authConfig = ConfigFactory.create(WebDriverConfig.class);
     String userName = authConfig.userName();
@@ -27,7 +29,7 @@ public class UserTests extends TestBase{
     @DisplayName("Проверка регистрации пользователя")
     @Test
     void registerUserApiTest() {
-        userApi.registerUser(100,userName,"Arsen","Beglaryan","arsenb@test.ru","79009999999",password,2);
+        userApi.registerUser(100, userName, "Arsen", "Beglaryan", "arsenb@test.ru", "79009999999", password, 2);
     }
 
     @DisplayName("Проверка получение корректных данных пользователя")
@@ -40,8 +42,8 @@ public class UserTests extends TestBase{
         int userStatus = 2;
         int id = 100;
 
-        userApi.registerUser(id,userName,firstName,lastName,email,phone,password,userStatus);
-        Response response = userApi.getUser(userName,userResponseSpecification200);
+        userApi.registerUser(id, userName, firstName, lastName, email, phone, password, userStatus);
+        Response response = userApi.getUser(userName, userResponseSpecification200);
         response.then()
                 .body("username", equalTo(userName))
                 .body("firstName", equalTo(firstName))
@@ -55,11 +57,11 @@ public class UserTests extends TestBase{
     @Test
     @DisplayName("Проверка обновления данных пользователя")
     void updateUserApiTest() {
-        userApi.registerUser(100,userName,"Arsen","Beglaryan","arsenb@test.ru","79009999999",password,2);
+        userApi.registerUser(100, userName, "Arsen", "Beglaryan", "arsenb@test.ru", "79009999999", password, 2);
         Map<String, Object> updatedFields = new HashMap<>();
         updatedFields.put("phone", "79999999999");
         userApi.updateUser(userName, updatedFields);
-        Response response = userApi.getUser(userName,userResponseSpecification200);
+        Response response = userApi.getUser(userName, userResponseSpecification200);
         response.then()
                 .body("phone", equalTo("79999999999"));
     }
@@ -69,7 +71,7 @@ public class UserTests extends TestBase{
     void deleteUserApiTest() {
         userApi.registerUser(100, userName, "Arsen", "Beglaryan", "arsenb@test.ru", "79009999999", password, 2);
         userApi.deleteUser(userName);
-        Response getResponse = userApi.getUser(userName,userResponseSpecification404);
+        Response getResponse = userApi.getUser(userName, userResponseSpecification404);
         getResponse.then()
                 .body("message", equalTo("User not found"));
     }

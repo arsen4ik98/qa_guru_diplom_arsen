@@ -39,5 +39,5 @@ public class UserSpecs {
     public static final ResponseSpecification userResponseSpecification201True = createResponseSpecification(201, true);
     public static final ResponseSpecification userResponseSpecification404 = createResponseSpecification(404, false);
     public static final ResponseSpecification userResponseSpecificationJson200 = createResponseSpecification(200, true);
-    public static final ResponseSpecification userResponseSpecification204 = createResponseSpecification(204,false);
+    public static final ResponseSpecification userResponseSpecification204 = createResponseSpecification(204, false);
 }

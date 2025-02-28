@@ -21,7 +21,7 @@ public class OrderApi {
     public Response createOrder(int id, int petId, int quantity, String shipDate, OrderStatus status, boolean complete) {
 
         OrderModel orderModel = new OrderModel(
-                id, petId,quantity,shipDate,status,complete
+                id, petId, quantity, shipDate, status, complete
         );
 
         Response response = given(userRequestSpecification)

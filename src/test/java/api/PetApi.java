@@ -9,6 +9,7 @@ import io.restassured.specification.ResponseSpecification;
 import org.aeonbits.owner.ConfigFactory;
 import tests.models.*;
 import io.restassured.response.Response;
+
 import java.util.List;
 
 import java.util.List;
@@ -67,7 +68,7 @@ public class PetApi {
     }
 
     @Step("Частично обновляем животного")
-    public Response updatePet( Map<String, Object> updatedFields) {
+    public Response updatePet(Map<String, Object> updatedFields) {
 
         Response response = given(userRequestSpecification)
                 .body(updatedFields)

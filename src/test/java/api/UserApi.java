@@ -8,6 +8,7 @@ import tests.models.UserModel;
 
 import static io.restassured.RestAssured.given;
 import static specs.UserSpecs.*;
+
 import io.restassured.response.Response;
 
 import java.util.Map;
