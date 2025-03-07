@@ -38,7 +38,7 @@ public class UserTests extends TestBase {
         Response response = userApi.registerUser(userId, userName, firstName, lastName, email, phone, password, status);
         response.then()
                 .statusCode(200)
-                .body("message", equalTo(userId));
+                .body("id", equalTo(String.valueOf(100)));
     }
 
     @DisplayName("Проверка получение корректных данных пользователя")

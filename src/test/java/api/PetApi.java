@@ -57,6 +57,15 @@ public class PetApi {
                 .spec(spec)
                 .extract().response();
     }
+    @Step("Удаляем животного")
+    public Response deleteFirstPet(int petId) {
+        return given(userRequestSpecification)
+                .header("api_key", apiKey)
+                .when()
+                .delete(baseUrl + "/v2/pet/" + petId)
+                .then()
+                .extract().response();
+    }
 
     @Step("Частично обновляем животного")
     public Response updatePet(int petId, Map<String, Object> updatedFields, ResponseSpecification spec) {

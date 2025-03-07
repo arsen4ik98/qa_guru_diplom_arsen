@@ -36,7 +36,7 @@ public class PetTests extends TestBase {
         PetTag petTag = new PetTag(2, "54");
         List<PetTag> tags = Collections.singletonList(petTag);
         PetModels pet = new PetModels(petId, category, petName, Collections.emptyList(), tags, PetStatus.AVAILABLE);
-        petApi.deletePet(petId, userResponseSpecification200);
+        petApi.deleteFirstPet(petId);
         Response response = petApi.addPet(pet);
 
         response.then()
@@ -60,7 +60,7 @@ public class PetTests extends TestBase {
         PetTag petTag = new PetTag(2, "54");
         List<PetTag> tags = Collections.singletonList(petTag);
         PetModels pet = new PetModels(petId, category, petName, Collections.emptyList(), tags, PetStatus.AVAILABLE);
-        petApi.deletePet(petId, userResponseSpecification200);
+        petApi.deleteFirstPet(petId);
         petApi.addPet(pet);
         Response response = petApi.getPet(petId, userResponseSpecification200);
 
@@ -86,7 +86,7 @@ public class PetTests extends TestBase {
         PetTag petTag = new PetTag(2, "54");
         List<PetTag> tags = Collections.singletonList(petTag);
         PetModels pet = new PetModels(petId, category, petName, Collections.emptyList(), tags, PetStatus.AVAILABLE);
-        petApi.deletePet(petId, userResponseSpecification200);
+        petApi.deleteFirstPet(petId);
         petApi.addPet(pet);
 
         Map<String, Object> updatedFields = new HashMap<>();
@@ -113,7 +113,7 @@ public class PetTests extends TestBase {
         PetTag petTag = new PetTag(2, "54");
         List<PetTag> tags = Collections.singletonList(petTag);
         PetModels pet = new PetModels(petId, category, "CatTest", Collections.emptyList(), tags, PetStatus.AVAILABLE);
-        petApi.deletePet(petId, userResponseSpecification200);
+        petApi.deleteFirstPet(petId);
         petApi.addPet(pet);
         petApi.deletePet(petId, userResponseSpecification200);
 
