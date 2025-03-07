@@ -20,7 +20,7 @@ public interface WebDriverConfig extends Config {
     String getRemoteUrl();
 
     @Key("api_key")
-    @DefaultValue("special-key")
+    @DefaultValue("special-shadow")
     String apiKey();
 
 }
