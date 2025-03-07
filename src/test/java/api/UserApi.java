@@ -39,7 +39,7 @@ public class UserApi {
 
         Response response = given(userRequestSpecification)
                 .when()
-                .get(baseUrl + "/v2/user/" + username) // Передаём username в URL
+                .get(baseUrl + "/v2/user/" + username)
                 .then()
                 .spec(spec)
                 .extract().response();
@@ -52,9 +52,9 @@ public class UserApi {
         Response response = given(userRequestSpecification)
                 .body(updatedFields)
                 .when()
-                .put(baseUrl + "/v2/user/" + username) // Запрос
+                .put(baseUrl + "/v2/user/" + username)
                 .then()
-                .spec(userResponseSpecification200) // Проверяем, что статус 200
+                .spec(userResponseSpecification200)
                 .extract().response();
 
         return response;
@@ -64,7 +64,7 @@ public class UserApi {
     public Response deleteUser(String username) {
         Response response = given(userRequestSpecification)
                 .when()
-                .delete(baseUrl + "/v2/user/" + username)  // Отправляем DELETE-запрос
+                .delete(baseUrl + "/v2/user/" + username)
                 .then()
                 .spec(userResponseSpecification200)
                 .extract().response();

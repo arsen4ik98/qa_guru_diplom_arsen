@@ -22,7 +22,6 @@ public class TestBase {
         String env = System.getProperty("env", "local");
         System.out.println("Environment: " + env);
 
-        // Загрузка файла из classpath
         try (InputStream input = TestBase.class.getClassLoader().getResourceAsStream(env + ".properties")) {
             if (input == null) {
                 throw new RuntimeException("Could not find properties file: " + env + ".properties");
@@ -38,14 +37,9 @@ public class TestBase {
 
         System.out.println(System.getProperties());
         System.out.println("Is Remote: " + config.getIsRemote());
-        System.out.println("Browser: " + config.getBrowser());
-        System.out.println("Browser Version: " + config.getBrowserVersion());
         System.out.println("Remote URL: " + config.getRemoteUrl());
         Configuration.baseUrl = config.getBaseUrl();
         Configuration.pageLoadStrategy = config.getLoadStrategy();
-        Configuration.browser = config.getBrowser();
-        Configuration.browserVersion = config.getBrowserVersion();
-        Configuration.browserSize = config.getbrowserSize();
 
         if (config.getIsRemote()) {
             Configuration.remote = config.getRemoteUrl();
@@ -61,6 +55,5 @@ public class TestBase {
     @BeforeEach
     void beforeEach() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-        //Selenide.open(Configuration.baseUrl);
     }
 }

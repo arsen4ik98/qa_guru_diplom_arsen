@@ -37,7 +37,7 @@ public class PetApi {
 
         Response response = given(userRequestSpecification)
                 .when()
-                .get(baseUrl + "/v2/pet/" + petId) // Передаём username в URL
+                .get(baseUrl + "/v2/pet/" + petId)
                 .then()
                 .spec(spec)
                 .extract().response();
@@ -59,7 +59,7 @@ public class PetApi {
         return given(userRequestSpecification)
                 .body(updatedFields)
                 .when()
-                .patch(baseUrl + "/v2/pet/" + petId)  // Используем PATCH
+                .patch(baseUrl + "/v2/pet/" + petId)
                 .then()
                 .spec(spec)
                 .extract().response();
