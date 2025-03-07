@@ -4,7 +4,7 @@ import config.WebDriverConfig;
 import io.qameta.allure.Step;
 import io.restassured.specification.ResponseSpecification;
 import org.aeonbits.owner.ConfigFactory;
-import tests.models.UserModel;
+import models.UserModel;
 
 import static io.restassured.RestAssured.given;
 import static specs.UserSpecs.*;
@@ -15,8 +15,7 @@ import java.util.Map;
 
 public class UserApi {
 
-    WebDriverConfig authConfig = ConfigFactory.create(WebDriverConfig.class);
-    String getBaseUrl = authConfig.getBaseUrl();
+    private final String baseUrl = ConfigFactory.create(WebDriverConfig.class).getBaseUrl();
 
     @Step("Регистрируемся через API")
     public Response registerUser(int id, String username, String firstName, String lastName, String email, String phone, String password, int userStatus) {
@@ -28,7 +27,7 @@ public class UserApi {
         Response response = given(userRequestSpecification)
                 .body(userModel)
                 .when()
-                .post(getBaseUrl + "/v2/user")
+                .post(baseUrl + "/v2/user")
                 .then()
                 .spec(userResponseSpecification200)
                 .extract().response();
@@ -40,7 +39,7 @@ public class UserApi {
 
         Response response = given(userRequestSpecification)
                 .when()
-                .get(getBaseUrl + "/v2/user/" + username) // Передаём username в URL
+                .get(baseUrl + "/v2/user/" + username) // Передаём username в URL
                 .then()
                 .spec(spec)
                 .extract().response();
@@ -53,7 +52,7 @@ public class UserApi {
         Response response = given(userRequestSpecification)
                 .body(updatedFields)
                 .when()
-                .put(getBaseUrl + "/v2/user/" + username) // Запрос
+                .put(baseUrl + "/v2/user/" + username) // Запрос
                 .then()
                 .spec(userResponseSpecification200) // Проверяем, что статус 200
                 .extract().response();
@@ -65,7 +64,7 @@ public class UserApi {
     public Response deleteUser(String username) {
         Response response = given(userRequestSpecification)
                 .when()
-                .delete(getBaseUrl + "/v2/user/" + username)  // Отправляем DELETE-запрос
+                .delete(baseUrl + "/v2/user/" + username)  // Отправляем DELETE-запрос
                 .then()
                 .spec(userResponseSpecification200)
                 .extract().response();

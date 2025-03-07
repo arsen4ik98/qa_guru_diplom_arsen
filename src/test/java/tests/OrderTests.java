@@ -8,7 +8,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import tests.models.OrderStatus;
+import models.OrderStatus;
 
 import static org.hamcrest.Matchers.equalTo;
 import static specs.UserSpecs.userResponseSpecification200;
@@ -19,7 +19,6 @@ import static specs.UserSpecs.userResponseSpecification404;
 @Owner("arsen4ik98")
 public class OrderTests extends TestBase {
 
-    WebDriverConfig authConfig = ConfigFactory.create(WebDriverConfig.class);
     OrderApi orderApi = new OrderApi();
 
     @DisplayName("Проверка создания заказа")

@@ -12,14 +12,6 @@ public interface WebDriverConfig extends Config {
     @DefaultValue("https://petstore.swagger.io")
     String getBaseUrl();
 
-    @Key("browser")
-    @DefaultValue("CHROME")
-    String getBrowser();
-
-    @Key("browserVersion")
-    @DefaultValue("latest")
-    String getBrowserVersion();
-
     @Key("isRemote")
     @DefaultValue("true")
     Boolean getIsRemote();
@@ -30,10 +22,6 @@ public interface WebDriverConfig extends Config {
     @Key("loadStrategy")
     @DefaultValue("eager")
     String getLoadStrategy();
-
-    @Key("browserSize")
-    @DefaultValue("1920x1080")
-    String getbrowserSize();
 
     @Key("userName")
     String userName();

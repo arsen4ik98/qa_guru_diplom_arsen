@@ -1,4 +1,4 @@
-package tests.models;
+package models;
 
 public enum PetStatus {
     AVAILABLE, PENDING, SOLD;
