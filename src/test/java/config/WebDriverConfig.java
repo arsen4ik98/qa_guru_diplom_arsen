@@ -19,5 +19,8 @@ public interface WebDriverConfig extends Config {
     @Key("remoteUrl")
     String getRemoteUrl();
 
+    @Key("api_key")
+    @DefaultValue("special-key")
+    String apiKey();
 
 }

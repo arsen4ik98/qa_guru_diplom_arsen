@@ -18,10 +18,12 @@ import models.PetModels;
 public class PetApi {
 
     private final String baseUrl = ConfigFactory.create(WebDriverConfig.class).getBaseUrl();
+    private final String apiKey = ConfigFactory.create(WebDriverConfig.class).apiKey();
 
     @Step("Добавляем нового животного")
     public Response addPet(PetModels petModels) {
         Response response = given(userRequestSpecification)
+                .header("api_key", apiKey)
                 .body(petModels)
                 .when()
                 .post(baseUrl + "/v2/pet")
@@ -36,6 +38,7 @@ public class PetApi {
     public Response getPet(int petId, ResponseSpecification spec) {
 
         Response response = given(userRequestSpecification)
+                .header("api_key", apiKey)
                 .when()
                 .get(baseUrl + "/v2/pet/" + petId)
                 .then()
@@ -47,6 +50,7 @@ public class PetApi {
     @Step("Удаляем животного")
     public Response deletePet(int petId, ResponseSpecification spec) {
         return given(userRequestSpecification)
+                .header("api_key", apiKey)
                 .when()
                 .delete(baseUrl + "/v2/pet/" + petId)
                 .then()
@@ -57,9 +61,10 @@ public class PetApi {
     @Step("Частично обновляем животного")
     public Response updatePet(int petId, Map<String, Object> updatedFields, ResponseSpecification spec) {
         return given(userRequestSpecification)
+                .header("api_key", apiKey)
                 .body(updatedFields)
                 .when()
-                .patch(baseUrl + "/v2/pet/" + petId)
+                .put(baseUrl + "/v2/pet/" + petId)
                 .then()
                 .spec(spec)
                 .extract().response();
