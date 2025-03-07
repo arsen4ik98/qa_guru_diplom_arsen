@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
 import static specs.UserSpecs.userResponseSpecification200;
 import static specs.UserSpecs.userResponseSpecification404;
 
@@ -31,7 +32,18 @@ public class PetTests extends TestBase {
         Category category = new Category(1232, "555");
         PetTag petTag = new PetTag(2, "54");
         PetModels pet = new PetModels(2, category, "CatTest", Collections.emptyList(), petTag, PetStatus.AVAILABLE);
-        petApi.addPet(pet);
+
+        Response response = petApi.addPet(pet);
+
+        response.then()
+                .statusCode(200)
+                .body("id", notNullValue())
+                .body("category.id", equalTo(category.getId()))
+                .body("category.name", equalTo(category.getName()))
+                .body("name", equalTo(pet.getName()))
+                .body("tags[0].id", equalTo(petTag.getId()))
+                .body("tags[0].name", equalTo(petTag.getName()))
+                .body("status", equalTo(pet.getStatus().toString()));
     }
 
     @DisplayName("Проверка получения корректных данных животного")
@@ -47,6 +59,7 @@ public class PetTests extends TestBase {
         Response response = petApi.getPet(petId, userResponseSpecification200);
 
         response.then()
+                .statusCode(200)
                 .body("id", equalTo(petId))
                 .body("category.id", equalTo(category.getId()))
                 .body("category.name", equalTo(category.getName()))
@@ -75,6 +88,7 @@ public class PetTests extends TestBase {
 
         Response response = petApi.getPet(petId, userResponseSpecification200);
         response.then()
+                .statusCode(200)
                 .body("id", equalTo(petId))
                 .body("category.id", equalTo(category.getId()))
                 .body("category.name", equalTo(category.getName()))
@@ -97,6 +111,7 @@ public class PetTests extends TestBase {
 
         Response getResponse = petApi.getPet(petId, userResponseSpecification404);
         getResponse.then()
+                .statusCode(404)
                 .body("message", equalTo("Pet not found"));
     }
 }

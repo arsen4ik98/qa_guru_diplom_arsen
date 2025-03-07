@@ -29,7 +29,23 @@ public class UserTests extends TestBase {
     @DisplayName("Проверка регистрации пользователя")
     @Test
     void registerUserApiTest() {
-        userApi.registerUser(100, userName, "Arsen", "Beglaryan", "arsenb@test.ru", "79009999999", password, 2);
+        int userId = 100;
+        String firstName = "Arsen";
+        String lastName = "Beglaryan";
+        String email = "arsenb@test.ru";
+        String phone = "79009999999";
+        int status = 2;
+
+        Response response = userApi.registerUser(userId, userName, firstName, lastName, email, phone, password, status);
+        response.then()
+                .statusCode(200)
+                .body("id", equalTo(userId))
+                .body("username", equalTo(userName))
+                .body("firstName", equalTo(firstName))
+                .body("lastName", equalTo(lastName))
+                .body("email", equalTo(email))
+                .body("phone", equalTo(phone))
+                .body("status", equalTo(status));
     }
 
     @DisplayName("Проверка получение корректных данных пользователя")
@@ -45,6 +61,7 @@ public class UserTests extends TestBase {
         userApi.registerUser(id, userName, firstName, lastName, email, phone, password, userStatus);
         Response response = userApi.getUser(userName, userResponseSpecification200);
         response.then()
+                .statusCode(200)
                 .body("username", equalTo(userName))
                 .body("firstName", equalTo(firstName))
                 .body("lastName", equalTo(lastName))
@@ -63,6 +80,7 @@ public class UserTests extends TestBase {
         userApi.updateUser(userName, updatedFields);
         Response response = userApi.getUser(userName, userResponseSpecification200);
         response.then()
+                .statusCode(200)
                 .body("phone", equalTo("79999999999"));
     }
 
@@ -73,6 +91,7 @@ public class UserTests extends TestBase {
         userApi.deleteUser(userName);
         Response getResponse = userApi.getUser(userName, userResponseSpecification404);
         getResponse.then()
+                .statusCode(404)
                 .body("message", equalTo("User not found"));
     }
 }
