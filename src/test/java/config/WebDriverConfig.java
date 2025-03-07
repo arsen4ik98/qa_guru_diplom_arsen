@@ -25,7 +25,6 @@ public interface WebDriverConfig extends Config {
     Boolean getIsRemote();
 
     @Key("remoteUrl")
-    @DefaultValue("https://user1:1234@selenoid.autotests.cloud/wd/hub")
     String getRemoteUrl();
 
     @Key("loadStrategy")
@@ -37,10 +36,8 @@ public interface WebDriverConfig extends Config {
     String getbrowserSize();
 
     @Key("userName")
-    @DefaultValue("arsen4ik98")
     String userName();
 
     @Key("password")
-    @DefaultValue("test123")
     String password();
 }

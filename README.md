@@ -35,6 +35,28 @@ ____
 <a href="https://www.atlassian.com/ru/software/jira/"><img src="images/logo/Jira.svg" width="50" height="50"  alt="Jira"/></a>  
 </p>
 
+
+**IntelliJ IDEA** – среда разработки для Java.
+
+**Java** – основной язык программирования.
+
+**GitHub** – система управления версиями.
+
+**JUnit 5** – фреймворк для модульного тестирования.
+
+**Gradle** – инструмент автоматизации сборки.
+
+**Allure** – инструмент для создания отчетов о тестировании.
+
+**Selenoid** – контейнеризированный Selenium Grid.
+
+**Docker** – платформа для контейнеризации.
+
+**Allure TestOps** – система управления тестированием.
+
+**Jenkins** – CI/CD сервер.
+
+**Jira** – система управления задачами.
 ____
 <a id="cases"></a>
 ## <a name="Примеры автоматизированных тест-кейсов">**Примеры автоматизированных тест-кейсов:**</a>
@@ -93,7 +115,7 @@ bi_test
 ```
 ___
 <a id="allure"></a>
-## <img alt="Allure" height="25" src="images/logo/Allure.svg" width="25"/></a> <a name="Allure"></a>Allure [отчет](https://jenkins.autotests.cloud/job/qa_guru_arsen_api_diplom/18/allure/)</a>
+## <img alt="Allure" height="25" src="images/logo/Allure.svg" width="25"/></a> <a name="Allure"></a>Allure [отчет](https://jenkins.autotests.cloud/job/qa_guru_arsen_api_diplom/allure/)</a>
 ___
 
 ### *Основная страница отчёта*
