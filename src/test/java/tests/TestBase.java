@@ -41,14 +41,23 @@ public class TestBase {
         Configuration.baseUrl = config.getBaseUrl();
         Configuration.pageLoadStrategy = config.getLoadStrategy();
 
-        if (config.getIsRemote()) {
-            Configuration.remote = config.getRemoteUrl();
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                    "enableVNC", true,
-                    "enableVideo", true
-            ));
-            Configuration.browserCapabilities = capabilities;
+        String userName = System.getProperty("userName");
+        String password = System.getProperty("password");
+
+        String remoteUrlTemplate = config.getRemoteUrl();
+        if (userName != null && password != null) {
+            remoteUrlTemplate = remoteUrlTemplate.replace("${userName}", userName)
+                    .replace("${password}", password);
+
+            if (config.getIsRemote()) {
+                Configuration.remote = config.getRemoteUrl();
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                        "enableVNC", true,
+                        "enableVideo", true
+                ));
+                Configuration.browserCapabilities = capabilities;
+            }
         }
     }
 

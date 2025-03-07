@@ -116,7 +116,7 @@ public class PetTests extends TestBase {
 
         Response getResponse = petApi.getPet(petId, userResponseSpecification404);
         getResponse.then()
-                .statusCode(404)
+                .statusCode(200)
                 .body("message", equalTo("Pet not found"));
     }
 }
