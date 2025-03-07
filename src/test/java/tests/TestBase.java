@@ -48,7 +48,8 @@ public class TestBase {
         if (userName != null && password != null) {
             remoteUrlTemplate = remoteUrlTemplate.replace("${userName}", userName)
                     .replace("${password}", password);
-
+            Configuration.remote = remoteUrlTemplate;  // Устанавливаем remoteUrl после замены
+        }
             if (config.getIsRemote()) {
                 Configuration.remote = config.getRemoteUrl();
                 DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -59,7 +60,7 @@ public class TestBase {
                 Configuration.browserCapabilities = capabilities;
             }
         }
-    }
+
 
     @BeforeEach
     void beforeEach() {
