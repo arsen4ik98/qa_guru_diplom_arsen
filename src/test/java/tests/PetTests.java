@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -31,7 +32,8 @@ public class PetTests extends TestBase {
     void registerPetApiTest() {
         Category category = new Category(1232, "555");
         PetTag petTag = new PetTag(2, "54");
-        PetModels pet = new PetModels(2, category, "CatTest", Collections.emptyList(), petTag, PetStatus.AVAILABLE);
+        List<PetTag> tags = Collections.singletonList(petTag);
+        PetModels pet = new PetModels(2, category, "CatTest", Collections.emptyList(), tags, PetStatus.AVAILABLE);
 
         Response response = petApi.addPet(pet);
 
@@ -54,7 +56,8 @@ public class PetTests extends TestBase {
         Category category = new Category(1232, "555");
         String petName = "doggie";
         PetTag petTag = new PetTag(2, "54");
-        PetModels pet = new PetModels(petId, category, petName, Collections.emptyList(), petTag, PetStatus.AVAILABLE);
+        List<PetTag> tags = Collections.singletonList(petTag);
+        PetModels pet = new PetModels(petId, category, petName, Collections.emptyList(), tags, PetStatus.AVAILABLE);
         petApi.addPet(pet);
         Response response = petApi.getPet(petId, userResponseSpecification200);
 
@@ -78,7 +81,8 @@ public class PetTests extends TestBase {
         String petName = "doggie";
         String newPetName = "cattie";
         PetTag petTag = new PetTag(2, "54");
-        PetModels pet = new PetModels(petId, category, petName, Collections.emptyList(), petTag, PetStatus.AVAILABLE);
+        List<PetTag> tags = Collections.singletonList(petTag);
+        PetModels pet = new PetModels(petId, category, petName, Collections.emptyList(), tags, PetStatus.AVAILABLE);
 
         petApi.addPet(pet);
 
@@ -104,7 +108,8 @@ public class PetTests extends TestBase {
         int petId = 178;
         Category category = new Category(1232, "555");
         PetTag petTag = new PetTag(2, "54");
-        PetModels pet = new PetModels(petId, category, "CatTest", Collections.emptyList(), petTag, PetStatus.AVAILABLE);
+        List<PetTag> tags = Collections.singletonList(petTag);
+        PetModels pet = new PetModels(petId, category, "CatTest", Collections.emptyList(), tags, PetStatus.AVAILABLE);
 
         petApi.addPet(pet);
         petApi.deletePet(petId, userResponseSpecification200);

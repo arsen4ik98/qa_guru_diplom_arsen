@@ -14,7 +14,7 @@ public class PetModels {
     private Category category;
     private String name;
     private List<String> photoUrls;
-    private PetTag petTag;
+    private List<PetTag> tags;
     private PetStatus status;
 }
 
