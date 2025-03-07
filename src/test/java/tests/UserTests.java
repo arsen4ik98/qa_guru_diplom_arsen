@@ -38,7 +38,7 @@ public class UserTests extends TestBase {
         Response response = userApi.registerUser(userId, userName, firstName, lastName, email, phone, password, status);
         response.then()
                 .statusCode(200)
-                .body("id", equalTo(String.valueOf(100)));
+                .body("message", equalTo(String.valueOf(100)));
     }
 
     @DisplayName("Проверка получение корректных данных пользователя")
@@ -82,9 +82,9 @@ public class UserTests extends TestBase {
     void deleteUserApiTest() {
         userApi.registerUser(100, userName, "Arsen", "Beglaryan", "arsenb@test.ru", "79009999999", password, 2);
         userApi.deleteUser(userName);
-        Response getResponse = userApi.getUser(userName, userResponseSpecification200);
+        Response getResponse = userApi.getUser(userName, userResponseSpecification404);
         getResponse.then()
-                .statusCode(200)
+                .statusCode(404)
                 .body("message", equalTo("User not found"));
     }
 }
