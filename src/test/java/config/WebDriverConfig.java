@@ -19,13 +19,5 @@ public interface WebDriverConfig extends Config {
     @Key("remoteUrl")
     String getRemoteUrl();
 
-    @Key("loadStrategy")
-    @DefaultValue("eager")
-    String getLoadStrategy();
 
-    @Key("userName")
-    String userName();
-
-    @Key("password")
-    String password();
 }

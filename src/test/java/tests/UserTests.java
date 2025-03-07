@@ -21,16 +21,13 @@ import static specs.UserSpecs.userResponseSpecification404;
 @Owner("arsen4ik98")
 public class UserTests extends TestBase {
 
-    WebDriverConfig authConfig = ConfigFactory.create(WebDriverConfig.class);
-    String userName = authConfig.userName();
-    String password = authConfig.password();
+    String userName = System.getProperty("userName");
+    String password = System.getProperty("password");
     UserApi userApi = new UserApi();
 
     @DisplayName("Проверка регистрации пользователя")
     @Test
     void registerUserApiTest() {
-        System.out.println("userName from Jenkins: " + System.getProperty("userName"));
-        System.out.println("password from Jenkins: " + System.getProperty("password"));
         int userId = 100;
         String firstName = "Arsen";
         String lastName = "Beglaryan";
