@@ -29,6 +29,8 @@ public class UserTests extends TestBase {
     @DisplayName("Проверка регистрации пользователя")
     @Test
     void registerUserApiTest() {
+        System.out.println("userName from Jenkins: " + System.getProperty("userName"));
+        System.out.println("password from Jenkins: " + System.getProperty("password"));
         int userId = 100;
         String firstName = "Arsen";
         String lastName = "Beglaryan";

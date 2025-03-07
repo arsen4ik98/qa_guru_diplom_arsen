@@ -33,25 +33,31 @@ public class TestBase {
         } catch (IOException e) {
             throw new RuntimeException("Could not load properties file: " + env + ".properties", e);
         }
+
         config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
 
         System.out.println(System.getProperties());
         System.out.println("Is Remote: " + config.getIsRemote());
         System.out.println("Remote URL: " + config.getRemoteUrl());
-        Configuration.baseUrl = config.getBaseUrl();
-        Configuration.pageLoadStrategy = config.getLoadStrategy();
+
 
         String userName = System.getProperty("userName");
         String password = System.getProperty("password");
+
+
+        System.out.println("userName: " + userName);
+        System.out.println("password: " + password);
 
         String remoteUrlTemplate = config.getRemoteUrl();
         if (userName != null && password != null) {
             remoteUrlTemplate = remoteUrlTemplate.replace("${userName}", userName)
                     .replace("${password}", password);
-            Configuration.remote = remoteUrlTemplate;  // Устанавливаем remoteUrl после замены
-        }
+
+
+            System.out.println("Remote URL after replacement: " + remoteUrlTemplate);
+
             if (config.getIsRemote()) {
-                Configuration.remote = config.getRemoteUrl();
+                Configuration.remote = remoteUrlTemplate;
                 DesiredCapabilities capabilities = new DesiredCapabilities();
                 capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                         "enableVNC", true,
@@ -60,10 +66,5 @@ public class TestBase {
                 Configuration.browserCapabilities = capabilities;
             }
         }
-
-
-    @BeforeEach
-    void beforeEach() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 }
