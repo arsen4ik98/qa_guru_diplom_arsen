@@ -30,11 +30,13 @@ public class PetTests extends TestBase {
     @Tag("bi_test")
     @Test
     void registerPetApiTest() {
+        int petId = 180;
         Category category = new Category(1232, "555");
+        String petName = "doggie";
         PetTag petTag = new PetTag(2, "54");
         List<PetTag> tags = Collections.singletonList(petTag);
-        PetModels pet = new PetModels(2, category, "CatTest", Collections.emptyList(), tags, PetStatus.AVAILABLE);
-
+        PetModels pet = new PetModels(petId, category, petName, Collections.emptyList(), tags, PetStatus.AVAILABLE);
+        petApi.deletePet(petId, userResponseSpecification200);
         Response response = petApi.addPet(pet);
 
         response.then()
@@ -52,12 +54,13 @@ public class PetTests extends TestBase {
     @Tag("bi_test")
     @Test
     void getPetApiTest() {
-        int petId = 178;
+        int petId = 180;
         Category category = new Category(1232, "555");
         String petName = "doggie";
         PetTag petTag = new PetTag(2, "54");
         List<PetTag> tags = Collections.singletonList(petTag);
         PetModels pet = new PetModels(petId, category, petName, Collections.emptyList(), tags, PetStatus.AVAILABLE);
+        petApi.deletePet(petId, userResponseSpecification200);
         petApi.addPet(pet);
         Response response = petApi.getPet(petId, userResponseSpecification200);
 
@@ -76,14 +79,14 @@ public class PetTests extends TestBase {
     @Tag("bi_test")
     @Test
     void updatePetApiTest() {
-        int petId = 178;
+        int petId = 180;
         Category category = new Category(1232, "555");
         String petName = "doggie";
         String newPetName = "cattie";
         PetTag petTag = new PetTag(2, "54");
         List<PetTag> tags = Collections.singletonList(petTag);
         PetModels pet = new PetModels(petId, category, petName, Collections.emptyList(), tags, PetStatus.AVAILABLE);
-
+        petApi.deletePet(petId, userResponseSpecification200);
         petApi.addPet(pet);
 
         Map<String, Object> updatedFields = new HashMap<>();
@@ -105,12 +108,12 @@ public class PetTests extends TestBase {
     @Test
     @DisplayName("Проверка удаления животного")
     void deletePetApiTest() {
-        int petId = 178;
+        int petId = 180;
         Category category = new Category(1232, "555");
         PetTag petTag = new PetTag(2, "54");
         List<PetTag> tags = Collections.singletonList(petTag);
         PetModels pet = new PetModels(petId, category, "CatTest", Collections.emptyList(), tags, PetStatus.AVAILABLE);
-
+        petApi.deletePet(petId, userResponseSpecification200);
         petApi.addPet(pet);
         petApi.deletePet(petId, userResponseSpecification200);
 

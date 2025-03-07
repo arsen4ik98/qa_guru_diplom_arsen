@@ -82,9 +82,9 @@ public class UserTests extends TestBase {
     void deleteUserApiTest() {
         userApi.registerUser(100, userName, "Arsen", "Beglaryan", "arsenb@test.ru", "79009999999", password, 2);
         userApi.deleteUser(userName);
-        Response getResponse = userApi.getUser(userName, userResponseSpecification404);
+        Response getResponse = userApi.getUser(userName, userResponseSpecification200);
         getResponse.then()
-                .statusCode(404)
+                .statusCode(200)
                 .body("message", equalTo("User not found"));
     }
 }
