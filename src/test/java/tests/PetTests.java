@@ -114,7 +114,7 @@ public class PetTests extends TestBase {
         petApi.addPet(pet);
         petApi.deletePet(petId, userResponseSpecification200);
 
-        Response getResponse = petApi.getPet(petId, userResponseSpecification404);
+        Response getResponse = petApi.getPet(petId, userResponseSpecification200);
         getResponse.then()
                 .statusCode(200)
                 .body("message", equalTo("Pet not found"));

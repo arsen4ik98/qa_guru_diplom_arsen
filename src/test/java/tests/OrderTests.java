@@ -72,7 +72,7 @@ public class OrderTests extends TestBase {
         orderApi.deleteOrder(7, userResponseSpecification200);
         Response response = orderApi.getOrder(7, userResponseSpecification404);
         response.then()
-                .statusCode(200)
+                .statusCode(404)
                 .body("message", equalTo("Order not found"));
     }
 }
