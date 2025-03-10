@@ -15,7 +15,6 @@ Thumbs.db
 # 📁 Java и Gradle
 /build/
 .gradle/
-build.gradle
 out/
 bin/
 
