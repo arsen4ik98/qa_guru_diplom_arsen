@@ -5,7 +5,6 @@ import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
 import org.aeonbits.owner.ConfigFactory;
-import models.*;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
