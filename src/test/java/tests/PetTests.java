@@ -36,8 +36,8 @@ public class PetTests extends TestBase {
         PetTag petTag = new PetTag(2, "54");
         List<PetTag> tags = Collections.singletonList(petTag);
         PetModels pet = new PetModels(petId, category, petName, Collections.emptyList(), tags, PetStatus.AVAILABLE);
-        petApi.deleteFirstPet(petId);
-        Response response = petApi.addPet(pet);
+        petApi.deleteFirstPet(petId,userResponseSpecification200);
+        Response response = petApi.addPet(pet,userResponseSpecification200);
 
         response.then()
                 .statusCode(200)
@@ -60,8 +60,8 @@ public class PetTests extends TestBase {
         PetTag petTag = new PetTag(2, "54");
         List<PetTag> tags = Collections.singletonList(petTag);
         PetModels pet = new PetModels(petId, category, petName, Collections.emptyList(), tags, PetStatus.AVAILABLE);
-        petApi.deleteFirstPet(petId);
-        petApi.addPet(pet);
+        petApi.deleteFirstPet(petId,userResponseSpecification200);
+        petApi.addPet(pet,userResponseSpecification200);
         Response response = petApi.getPet(petId, userResponseSpecification200);
 
         response.then()
@@ -86,8 +86,8 @@ public class PetTests extends TestBase {
         PetTag petTag = new PetTag(2, "54");
         List<PetTag> tags = Collections.singletonList(petTag);
         PetModels pet = new PetModels(petId, category, petName, Collections.emptyList(), tags, PetStatus.AVAILABLE);
-        petApi.deleteFirstPet(petId);
-        petApi.addPet(pet);
+        petApi.deleteFirstPet(petId,userResponseSpecification200);
+        petApi.addPet(pet,userResponseSpecification200);
 
         Map<String, Object> updatedFields = new HashMap<>();
         updatedFields.put("name", newPetName);
@@ -106,20 +106,24 @@ public class PetTests extends TestBase {
     }
 
     @Test
-    @DisplayName("Проверка удаления животного")
-    void deletePetApiTest() {
+    @DisplayName("Добавление и удаление животного")
+    void createAndDeletePetTest() {
         int petId = 180;
-        Category category = new Category(1232, "555");
-        PetTag petTag = new PetTag(2, "54");
-        List<PetTag> tags = Collections.singletonList(petTag);
-        PetModels pet = new PetModels(petId, category, "CatTest", Collections.emptyList(), tags, PetStatus.AVAILABLE);
-        petApi.deleteFirstPet(petId);
-        petApi.addPet(pet);
+        PetModels pet = PetModels.builder()
+                .id(petId)
+                .category(new Category(1232, "555"))
+                .name("CatTest")
+                .photoUrls(List.of("http://photo.url"))
+                .tags(List.of(new PetTag(2, "54")))
+                .status(PetStatus.AVAILABLE)
+                .build();
+        petApi.deleteFirstPet(petId,userResponseSpecification200);
+        petApi.addPet(pet,userResponseSpecification200);
         petApi.deletePet(petId, userResponseSpecification200);
 
         Response getResponse = petApi.getPet(petId, userResponseSpecification404);
         getResponse.then()
-                .statusCode(200)
+                .statusCode(404)
                 .body("message", equalTo("Pet not found"));
     }
 }

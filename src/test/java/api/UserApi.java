@@ -1,6 +1,6 @@
 package api;
 
-import config.WebDriverConfig;
+import config.ApiConfig;
 import io.qameta.allure.Step;
 import io.restassured.specification.ResponseSpecification;
 import org.aeonbits.owner.ConfigFactory;
@@ -15,8 +15,8 @@ import java.util.Map;
 
 public class UserApi {
 
-    private final String baseUrl = ConfigFactory.create(WebDriverConfig.class).getBaseUrl();
-    private final String apiKey = ConfigFactory.create(WebDriverConfig.class).apiKey();
+    private final String baseUrl = ConfigFactory.create(ApiConfig.class).getBaseUrl();
+    private final String apiKey = ConfigFactory.create(ApiConfig.class).apiKey();
 
     @Step("Регистрируемся через API")
     public Response registerUser(int id, String username, String firstName, String lastName, String email, String phone, String password, int userStatus) {

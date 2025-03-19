@@ -1,10 +1,8 @@
 package tests;
 
 import api.UserApi;
-import config.WebDriverConfig;
 import io.qameta.allure.Owner;
 import io.restassured.response.Response;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;

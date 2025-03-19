@@ -7,7 +7,7 @@ import org.aeonbits.owner.Config;
         "classpath:local.properties"
 })
 
-public interface WebDriverConfig extends Config {
+public interface ApiConfig extends Config {
     @Key("baseUrl")
     @DefaultValue("https://petstore.swagger.io")
     String getBaseUrl();

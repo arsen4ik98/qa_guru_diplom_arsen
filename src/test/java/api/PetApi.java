@@ -1,6 +1,6 @@
 package api;
 
-import config.WebDriverConfig;
+import config.ApiConfig;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
@@ -9,25 +9,24 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 import static specs.UserSpecs.userRequestSpecification;
-import static specs.UserSpecs.userResponseSpecification200;
 
 import models.PetModels;
 
 
 public class PetApi {
 
-    private final String baseUrl = ConfigFactory.create(WebDriverConfig.class).getBaseUrl();
-    private final String apiKey = ConfigFactory.create(WebDriverConfig.class).apiKey();
+    private final String baseUrl = ConfigFactory.create(ApiConfig.class).getBaseUrl();
+    private final String apiKey = ConfigFactory.create(ApiConfig.class).apiKey();
 
     @Step("Добавляем нового животного")
-    public Response addPet(PetModels petModels) {
+    public Response addPet(PetModels petModels,ResponseSpecification spec) {
         Response response = given(userRequestSpecification)
                 .header("api_key", apiKey)
                 .body(petModels)
                 .when()
                 .post(baseUrl + "/v2/pet")
                 .then()
-                .spec(userResponseSpecification200)
+                .spec(spec)
                 .extract().response();
 
         return response;
@@ -57,12 +56,13 @@ public class PetApi {
                 .extract().response();
     }
     @Step("Удаляем животного")
-    public Response deleteFirstPet(int petId) {
+    public Response deleteFirstPet(int petId,ResponseSpecification spec) {
         return given(userRequestSpecification)
                 .header("api_key", apiKey)
                 .when()
                 .delete(baseUrl + "/v2/pet/" + petId)
                 .then()
+                .spec(spec)
                 .extract().response();
     }
 

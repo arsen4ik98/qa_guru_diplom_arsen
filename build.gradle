@@ -16,7 +16,6 @@ tasks.withType(Test) {
     }
 }
 def aspectjWeaverVersion = "1.9.22",
-    selenideVersion = "6.19.1",
     restAssuredVersion = "5.3.0",
     allureVersion = "2.29.0",
     junitVersion = "5.9.3",
@@ -52,9 +51,6 @@ java {
 dependencies {
     testImplementation(
             "org.aspectj:aspectjweaver:$aspectjWeaverVersion",
-            "com.codeborne:selenide:$selenideVersion",
-            "io.qameta.allure:allure-selenide:$allureVersion",
-            "io.appium:java-client:8.3.0",
             "io.rest-assured:rest-assured:$restAssuredVersion",
             "org.junit.jupiter:junit-jupiter:$junitVersion",
             "org.slf4j:slf4j-simple:$slf4jVersion",

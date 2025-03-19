@@ -1,10 +1,8 @@
 package tests;
 
 import api.OrderApi;
-import config.WebDriverConfig;
 import io.qameta.allure.Owner;
 import io.restassured.response.Response;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -67,12 +65,12 @@ public class OrderTests extends TestBase {
 
     @Test
     @DisplayName("Проверка удаления заказа")
-    void deleteUserApiTest() {
+    void deleteOrderTest() {
         orderApi.createOrder(7, 106, 6, "2025-03-11T09:59:21.890+0000", OrderStatus.PLACED, true);
         orderApi.deleteOrder(7, userResponseSpecification200);
         Response response = orderApi.getOrder(7, userResponseSpecification404);
         response.then()
-                .statusCode(200)
+                .statusCode(404)
                 .body("message", equalTo("Order not found"));
     }
 }

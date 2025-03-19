@@ -26,4 +26,8 @@ public class UserSpecs {
             .expectStatusCode(404)
             .log(ALL)
             .build();
+    public static ResponseSpecification userResponseSpecification201 = new ResponseSpecBuilder()
+            .expectStatusCode(201)
+            .log(ALL)
+            .build();
 }

@@ -1,6 +1,6 @@
 package api;
 
-import config.WebDriverConfig;
+import config.ApiConfig;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import io.restassured.specification.ResponseSpecification;
@@ -14,8 +14,8 @@ import static specs.UserSpecs.userResponseSpecification200;
 
 public class OrderApi {
 
-    private final String baseUrl = ConfigFactory.create(WebDriverConfig.class).getBaseUrl();
-    private final String apiKey = ConfigFactory.create(WebDriverConfig.class).apiKey();
+    private final String baseUrl = ConfigFactory.create(ApiConfig.class).getBaseUrl();
+    private final String apiKey = ConfigFactory.create(ApiConfig.class).apiKey();
 
     @Step("Создаем заказ")
     public Response createOrder(int id, int petId, int quantity, String shipDate, OrderStatus status, boolean complete) {
